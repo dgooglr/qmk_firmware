@@ -25,7 +25,6 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _ALTGR,
-  _SPACEBAR,
   _SYSTEM
 };
 
@@ -75,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         lctl,  lgui, lalt,  altgr,   lw,  spc,  spc, ra, n0, DOT,  eql, xxxx
     ),
     [_RAISE] = LAYOUT_planck_grid(
-        tild, exlm, acut,  hash, bult,  perc, ampr, slsh,  lprn, rprn,   eql, bspc,
+        tild, exlm, dquo,  hash, bult,  perc, ampr, slsh,  lprn, rprn,   eql, bspc,
          esc,   f1,   f2,    f3,   f4,    f5,   f6, xxxx,  xxxx, xxxx,  uml, quot,
         LSFT,   f7,   f8,    f9,  f10,   f11,  f12, xxxx,  lt, gt,  xxxx,  ent,
         lctl, lgui, lalt, altgr,   lw,   spc,  spc,   ra,   grv, acut,  xxxx, xxxx
@@ -86,13 +85,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LSFT,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, bsls,  ent,
         lctl,  lgui, lalt,  altgr,   lw,  spc,  spc,   ra, pipe, pgdn, pgup, xxxx
     ),
-    [_SPACEBAR] = LAYOUT_planck_grid(
-         tab,  half, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, bspc,
-         esc,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
-        LSFT,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, mute,  xxxx,
-        lctl,  lgui, lalt,  altgr,   lw,  spc,  spc,   ra, next, vold, volu, play
-    ),
-
     [_GAME] = LAYOUT_planck_grid(
         n1,   q,    w,    e,    r,    t,    y,    u,    i,    o,    p,    bspc,
         ____, a,    s,    d,    f,    g,    h,    j,    k,    l,    SCLN, QUOT,
@@ -103,8 +95,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYSTEM] = LAYOUT_planck_grid(
         xxxx, xxxx, wntg, xxxx, rset, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
         xxxx, xxxx, xxxx, xxxx, xxxx, game, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
-        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
-        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx
+        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, mute,  xxxx,
+        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, next, vold, volu, play
     )
 };
 
