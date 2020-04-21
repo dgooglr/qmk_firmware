@@ -34,6 +34,19 @@ enum planck_keycodes {
   wntg
 };
 
+
+//Tap Dance Declarations
+enum {
+  TD_BKSP_AA = 0
+};
+
+//Tap Dance Definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  //Tap once for Esc, twice for Caps Lock
+  [TD_BKSP_AA]  = ACTION_TAP_DANCE_DOUBLE(bspc, aa)
+// Other declarations would go here, separated by commas, if you have them
+};
+
 bool winkey_enabled = true;
 bool gamemode_enabled = false;
 
@@ -50,7 +63,7 @@ bool gamemode_enabled = false;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_BASE] = LAYOUT_planck_grid(
-         tab,    q,    w,     e,  r,    t,    y,    u,     i,    o,     p,  bspc,
+         tab,    q,    w,     e,  r,    t,    y,    u,     i,    o,     p, TD(TD_BKSP_AA),
          esc,    a,    s,     d,  f,    g,    h,    j,     k,    l,    ae,   oe,
         LSFT,    z,    x,     c,  v,    b,    n,    m,  COMM,  DOT,  slsh,  ent,
         lctl, lgui, lalt, altgr, lw,  spc,  spc,   ra,  left, down,    up, rght
@@ -63,8 +76,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_RAISE] = LAYOUT_planck_grid(
         tild, exlm, acut,  hash, bult,  perc, ampr, slsh,  lprn, rprn,   eql, bspc,
-         esc,   F1,   F2,    F3,   F4,    F5,   F6, xxxx,  xxxx, xxxx,  uml, quot,
-        LSFT,   F7,   F8,    F9,  F10,   F11,  F12, xxxx,  lt, gt,  xxxx,  ent,
+         esc,   f1,   f2,    f3,   f4,    f5,   f6, xxxx,  xxxx, xxxx,  uml, quot,
+        LSFT,   f7,   f8,    f9,  f10,   f11,  f12, xxxx,  lt, gt,  xxxx,  ent,
         lctl, lgui, lalt, altgr,   lw,   spc,  spc,   ra,   grv, acut,  xxxx, xxxx
     ),
     [_ALTGR] = LAYOUT_planck_grid(
@@ -76,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SPACEBAR] = LAYOUT_planck_grid(
          tab,  half, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, bspc,
          esc,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
-        LSFT,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, mute,  stop,
+        LSFT,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, mute,  xxxx,
         lctl,  lgui, lalt,  altgr,   lw,  spc,  spc,   ra, next, vold, volu, play
     ),
 

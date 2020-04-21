@@ -21,4 +21,6 @@
   #define NO_MUSIC_MODE
 #endif
 
+#define TAPPING_TERM 200
+
 // place overrides here
