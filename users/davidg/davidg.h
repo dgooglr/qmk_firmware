@@ -23,6 +23,9 @@ enum custom_keycodes {
   NUM0,                  // 0 | )
   EQAL,                  // = | +
 
+  COMMA,                 // , | ;
+  DOTS,                  // . | :
+
   NEW_SAFE_RANGE         // Use for keymap specific keycodes
 };
 

@@ -69,6 +69,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     
+    case COMMA:
+      SHIFT_NORM(KC_COMM, KC_COMM)
+    case DOTS:
+      SHIFT_NORM(KC_DOT, KC_DOT)
     case COMM:
       SHIFT_NO(KC_COMM, lt)
     case DOT:
