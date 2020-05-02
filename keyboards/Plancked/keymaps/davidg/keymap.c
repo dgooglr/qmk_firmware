@@ -54,14 +54,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         tab,  q,    w,    e,    r,    t,    y,    u,    i,    o,    p,    bspc,
         esc,  a,    s,    d,    f,    g,    h,    j,    k,    l,    SCLN, QUOT,
         LSFT, z,    x,    c,    v,    b,    n,    m,    COMM, DOT,  SLSH,  ent,
-        lctl, fn,   lgui, lalt, lw,   spc,  spc,  ra,   left, down,   up,  rght
+        lctl, fn,   lgui, lalt, lw,   spc,  spc,  ra,   left, up,   down,  rght
     ),
 
     [_GAME] = LAYOUT_planck_grid(
         n1,   q,    w,    e,    r,    t,    y,    u,    i,    o,    p,    bspc,
         ____, a,    s,    d,    f,    g,    h,    j,    k,    l,    SCLN, QUOT,
         ____, z,    x,    c,    v,    b,    n,    m,    COMM, DOT,  SLSH,  ent,
-        ____, n4,   n3,   n2,   lw,   spc,  spc,  ra,   left, down,   up,  rght
+        ____, n4,   n3,   n2,   lw,   spc,  spc,  ra,   left, up,   down,  rght
     ),
 
     [_LOWER] = LAYOUT_planck_grid(
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         grv,  n1,   n2,   n3,     n4,   n5,   n6,   n7,   n8,   n9,   n0, bspc,
         ____, n4,   n5,   n6,   xxxx, xxxx, xxxx,   n4,   n5,   n6, xxxx,  uml,
         ____, n7,   n8,   n9,   xxxx, xxxx, xxxx,   n1,   n2,   n3, xxxx, ____,
-        ____, fn,   n0,   lalt, ____, ____, ____,   ra,   left, down,   up,  rght
+        ____, fn,   n0,   lalt, ____, ____, ____,   ra,   left, up, down,  rght
     ),
 
     [_FN] = LAYOUT_planck_grid(
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         xxxx, xxxx, wntg, xxxx, rset, xxxx, xxxx, xxxx, xxxx, xxxx, prnt, xxxx,
         xxxx, xxxx, xxxx, xxxx, xxxx, game, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
         xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, mute,  xxxx,
-        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, next, vold, volu, play
+        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, next, volu, vold, play
     )
 };
 
