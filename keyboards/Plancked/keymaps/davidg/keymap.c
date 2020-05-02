@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         grv,  n1,   n2,   n3,     n4,   n5,   n6,   n7,   n8,   n9,   n0, bspc,
         ____, n4,   n5,   n6,   xxxx, xxxx, xxxx,   n4,   n5,   n6, xxxx,  uml,
         ____, n7,   n8,   n9,   xxxx, xxxx, xxxx,   n1,   n2,   n3, xxxx, ____,
-        ____, fn,   n0,   lalt, ____, ____, ____,   n0,   n0, xxxx, xxxx, xxxx
+        ____, fn,   n0,   lalt, ____, ____, ____,   ra,   left, down,   up,  rght
     ),
 
     [_FN] = LAYOUT_planck_grid(
