@@ -21,7 +21,4 @@
   #define NO_MUSIC_MODE
 #endif
 
-#define TAPPING_TERM 175
-#define COMBO_COUNT 1
-
 // place overrides here

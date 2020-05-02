@@ -24,13 +24,35 @@ enum planck_layers {
   _GAME,
   _LOWER,
   _RAISE,
-  _FN,
+  _ALTGR,
   _SYSTEM
 };
 
 enum planck_keycodes {
   base = SAFE_RANGE,
   wntg
+};
+
+enum combos {
+  XY_BKSP
+};
+
+const uint16_t PROGMEM xy_combo[] = {p, aa, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [XY_BKSP] = COMBO(xy_combo, KC_BSPC)
+};
+
+//Tap Dance Declarations
+enum {
+  TD_A_AA = 0
+};
+
+//Tap Dance Definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  //Tap once for Esc, twice for Caps Lock
+  [TD_A_AA]  = ACTION_TAP_DANCE_DOUBLE(a, aa)
+// Other declarations would go here, separated by commas, if you have them
 };
 
 bool winkey_enabled = true;
@@ -40,23 +62,38 @@ bool gamemode_enabled = false;
 #define game TG(_GAME)
 #define lw MO(_LOWER)
 #define ra MO(_RAISE)
-#define fn MO(_FN)
+#define altgr MO(_ALTGR)
 #define rset RESET
 
 #define ____ KC_TRNS
 #define xxxx KC_NO
 
-// UPPERCASE keycodes are handled by process_record_user() in the file 'brianoverby.c' from userspace
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_BASE] = LAYOUT_planck_grid(
-        tab,  q,    w,    e,    r,    t,    y,    u,    i,    o,    p,    bspc,
-        esc,  a,    s,    d,    f,    g,    h,    j,    k,    l,    SCLN, QUOT,
-        LSFT, z,    x,    c,    v,    b,    n,    m,    COMM, DOT,  up,   ent,
-        lctl, fn,   lgui, lalt, lw,   spc,  spc,  ra,   SLSH, left, down, rght
+         tab,    q,    w,     e,  r,    t,    y,    u,     i,    o,     p, aa,
+         esc,    a,    s,     d,  f,    g,    h,    j,     k,    l,    ae,   oe,
+        LSFT,    z,    x,     c,  v,    b,    n,    m,  COMMA,  DOTS,  SLSH,  ent,
+        lctl, lgui, lalt, altgr, lw,  spc,  spc,   ra,  left, down,    up, rght
     ),
-
+    [_LOWER] = LAYOUT_planck_grid(
+        tild, exlm, dquo,  hash, bult,  perc, ampr, slsh,  lprn, rprn,   eql, bkcp,
+         esc,   f1,   f2,    f3,   f4,    f5,   f6, xxxx,  xxxx, xxxx,  uml, quot,
+        LSFT,   f7,   f8,    f9,  f10,   f11,  f12, xxxx,  lt, gt,  xxxx,  ent,
+        lctl, lgui, lalt, altgr,   lw,   spc,  spc,   ra,   grv, acut,  xxxx, xxxx
+    ),
+    [_RAISE] = LAYOUT_planck_grid(
+         tab,    n1,   n2,     n3,   n4,   n5,   n6, n7, n8,  n9,   n0, bspc,
+         esc,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, n4, n5,  n6, plus, astr,
+        LSFT,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, n1, n2,  n3, mins,  ent,
+        lctl,  lgui, lalt,  altgr,   lw,  spc,  spc, ra, n0, DOT,  eql, xxxx
+    ),
+    [_ALTGR] = LAYOUT_planck_grid(
+         tab,  xxxx,   at,    pnd,  dlr, euro, sect, lcbr, lbrc, rbrc, rcbr,  del,
+         esc,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, unds, circ,
+        LSFT,  xxxx, xxxx,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, BSLS,  ent,
+        lctl,  lgui, lalt,  altgr,   lw,  spc,  spc,   ra, pipe, pgdn, pgup, xxxx
+    ),
     [_GAME] = LAYOUT_planck_grid(
         n1,   q,    w,    e,    r,    t,    y,    u,    i,    o,    p,    bspc,
         ____, a,    s,    d,    f,    g,    h,    j,    k,    l,    SCLN, QUOT,
@@ -64,32 +101,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ____, n4,   n3,   n2,   lw,   spc,  spc,  ra,   SLSH, left, down, rght
     ),
 
-    [_LOWER] = LAYOUT_planck_grid(
-        tild, exlm, at,   hash, dlr,  perc, circ, ampr, astr, lprn, rprn, bspc,
-        ____, n1,   n2,   n3,   n4,   n5,   xxxx, unds, plus, lcbr, rcbr, acut,
-        ____, n6,   n7,   n8,   n9,   n0,   xxxx, mins, eql,  lbrc, rbrc, ____,
-        ____, fn,   lgui, lalt, ____, ____, ____, ____, bsls, pipe, xxxx, xxxx
-    ),
-
-    [_RAISE] = LAYOUT_planck_grid(
-        grv,  n1,   n2,   n3,   n4,   n5,   n6,   n7,   n8,   n9,   n0,   bspc,
-        ____, n4,   n5,   n6,   xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, uml,
-        ____, n7,   n8,   n9,   xxxx, xxxx, xxxx, xxxx, ____, ____, volu, ____,
-        ____, fn,   n0,   lalt, ____, ____, ____, ____, ____, next, vold, play
-    ),
-
-    [_FN] = LAYOUT_planck_grid(
-        tab,  f1,   f2,   f3,   f4,   xxxx, xxxx, xxxx, ins,  xxxx, prnt, aa,
-        del,  f5,   f6,   f7,   f8,   xxxx, xxxx, xxxx, xxxx, xxxx, ae,   oe,
-        ____, f9,   f10,  f11,  f12,  xxxx, xxxx, xxxx, xxxx, xxxx, pgup, del,
-        ____, fn,   lgui, lalt, ____, ____, ____, ____, xxxx, home, pgdn, end
-    ),
-
     [_SYSTEM] = LAYOUT_planck_grid(
-        xxxx, xxxx, wntg, xxxx, rset, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
+        xxxx, xxxx, wntg, xxxx, rset, xxxx, xxxx, xxxx, xxxx, xxxx, prnt, xxxx,
         xxxx, xxxx, xxxx, xxxx, xxxx, game, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
-        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx,
-        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx
+        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, mute,  xxxx,
+        xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, xxxx, next, vold, volu, play
     )
 };
 
